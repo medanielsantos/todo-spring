@@ -37,7 +37,7 @@ public class TaskController {
 
         var task = this.taskRepository.save(taskModel);
 
-        return ResponseEntity.status(HttpStatus.OK).body(task);
+        return ResponseEntity.status(HttpStatus.CREATED).body(task);
     }
 
     @GetMapping("/")
@@ -48,12 +48,26 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public TaskModel update(@RequestBody TaskModel taskModel, HttpServletRequest request, @PathVariable UUID id) {
+    public ResponseEntity update(@RequestBody TaskModel taskModel, HttpServletRequest request, @PathVariable UUID id) {
         var task = this.taskRepository.findById(id).orElse((null));
+
+        if (task == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Task not found");
+        }
+
+        var idUser = request.getAttribute("idUser");
+
+        if (!task.getIdUser().equals(idUser)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("User not allow edit this task");
+        }
 
         Utils.copyNotNullProperties(taskModel, task);
 
-        return this.taskRepository.save(task);
+        var taskUpdate = this.taskRepository.save(task);
+
+        return ResponseEntity.ok().body(taskUpdate);
     }
 
 }

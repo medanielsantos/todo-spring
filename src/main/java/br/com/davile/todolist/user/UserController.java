@@ -23,7 +23,7 @@ public class UserController {
         var user = this.userRepository.findByUsername(userModel.getUsername());
 
         if (user != null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Resource is Exist");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Resource is exist");
         }
 
         var passwordHash = BCrypt.withDefaults().hashToString(12, userModel.getPassword().toCharArray());
