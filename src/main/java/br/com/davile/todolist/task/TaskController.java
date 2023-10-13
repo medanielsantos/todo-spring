@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TaskController {
 
     @Autowired
-    private ITaskRespository taskRespository;
+    private ITaskRepository taskRespository;
 
     @PostMapping("/")
     public TaskModel create(@RequestBody TaskModel taskModel) {
