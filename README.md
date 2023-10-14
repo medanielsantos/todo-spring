@@ -30,7 +30,9 @@ In this course we created a TO-DO List project, and in it we addressed the conce
 
     mvn spring-boot:run
 
-### Request
+## Request
+
+### Create User
 
 `POST /users/`
 
@@ -40,7 +42,11 @@ In this course we created a TO-DO List project, and in it we addressed the conce
     "password": "456789"
     }
 
+### List All Task
+
 `GET /tasks/`
+
+### Create Task
 
 `POST /tasks/`
 
@@ -52,6 +58,10 @@ In this course we created a TO-DO List project, and in it we addressed the conce
         "endAt": "2023-15-14T17:20:00"
     }
 
-    `PUT /tasks/:id`
+### Update Task
 
-    `DELETE /tasks/:id`
+`PUT /tasks/:id`
+
+### Delete Task
+
+`DELETE /tasks/:id`
