@@ -13,6 +13,7 @@ public class Utils {
     public static void copyNotNullProperties(Object source, Object target) {
         BeanUtils.copyProperties(source, target, getNullPropertyNames(source));
     }
+
     public static String[] getNullPropertyNames(Object source) {
         final BeanWrapper src = new BeanWrapperImpl(source);
 
@@ -20,7 +21,7 @@ public class Utils {
 
         Set<String> emptyNames = new HashSet<>();
 
-        for (PropertyDescriptor pd:pds) {
+        for (PropertyDescriptor pd : pds) {
             Object srcValue = src.getPropertyValue(pd.getName());
             if (srcValue == null) {
                 emptyNames.add(pd.getName());

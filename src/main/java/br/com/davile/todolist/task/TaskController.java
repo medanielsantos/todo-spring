@@ -70,4 +70,26 @@ public class TaskController {
         return ResponseEntity.ok().body(taskUpdate);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(HttpServletRequest request, @PathVariable UUID id) {
+        var task = this.taskRepository.findById(id).orElse((null));
+
+        if (task == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Task not found");
+        }
+
+        var idUser = request.getAttribute("idUser");
+
+        if (!task.getIdUser().equals(idUser)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("User not allow delete this task");
+        }
+
+        this.taskRepository.delete(task);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+
 }
