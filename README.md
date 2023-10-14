@@ -32,6 +32,12 @@ In this course we created a TO-DO List project, and in it we addressed the conce
 
 ## Request
 
+Authentication required only on the endpoint: `/tasks/`
+
+**Authentication type: Basic Auth**
+
+---
+
 ### Create User
 
 `POST /users/`
