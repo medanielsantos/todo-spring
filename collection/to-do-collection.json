@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "c241c008-a83e-433b-9c74-2dcc886f270e",
+		"name": "TO-DO Java",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12090850",
+		"_collection_link": "https://www.postman.com/medanielsantos/workspace/to-do-java/collection/12090850-c241c008-a83e-433b-9c74-2dcc886f270e?action=share&source=collection_link&creator=12090850"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Daniel\",\n    \"username\": \"daniel\",\n    \"password\": \"456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						},
+						"description": "You need to create a user to be able to create a task\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tasks/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								""
+							]
+						},
+						"description": "List all tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"title\": \"Test API\",\n    \"description\" : \"Test API Description\",\n    \"priority\": \"High\",\n    \"startAt\": \"2023-12-14T12:20:00\",\n    \"endAt\": \"2023-15-14T17:20:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								""
+							]
+						},
+						"description": "Create task"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"title\": \"Test API Update\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/<ID>",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"<ID>"
+							]
+						},
+						"description": "Update task\n\nID: Required"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/<ID>",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks",
+								"<ID>"
+							]
+						},
+						"description": "Delete task  \n  \nID: Required"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
