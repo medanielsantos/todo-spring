@@ -34,6 +34,7 @@ public class TaskModel {
         if (title.length() > 40) {
             throw new Exception("This field title should be max 50 chars");
         }
+
         this.title = title;
     }
 
