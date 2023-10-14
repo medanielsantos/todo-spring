@@ -36,4 +36,5 @@ public class UserController {
                 .header("Location", "/users/" + userCreated.getId())
                 .body(userModel);
     }
+
 }
