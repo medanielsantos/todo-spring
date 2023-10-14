@@ -19,5 +19,5 @@ In this course we created a TO-DO List project, and in it we addressed the conce
 - Maven;
 - Spring Boot;
 - Lombok;
-- MySQL;
+- Postgres;
 - Bcrypt;
